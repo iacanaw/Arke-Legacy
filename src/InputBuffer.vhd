@@ -10,19 +10,19 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
 use IEEE.numeric_std.all;
+use work.Arke_pkg.all;
 
 entity InputBuffer is
     port(
-        clk             : in    std_logic;
-        rst             : in    std_logic;
+        clk             : in std_logic;
+        rst             : in std_logic;
         
         -- Receiving/Sending Interface
-        data_in         : in    std_logic_vector(DATA_WIDTH-1 downto 0);
-        control_in      : in    std_logic_vector(CONTROL_WIDTH-1 downto 0);
-        data_out        : out    std_logic_vector(DATA_WIDTH-1 downto 0);
-        control_out     : out    std_logic_vector(CONTROL_WIDTH-1 downto 0);
+        data_in         : in std_logic_vector(DATA_WIDTH-1 downto 0);
+        control_in      : in std_logic_vector(CONTROL_WIDTH-1 downto 0);
+        data_out        : out std_logic_vector(DATA_WIDTH-1 downto 0);
+        control_out     : out std_logic_vector(CONTROL_WIDTH-1 downto 0);
         
         -- Switch Control Interface
         routingRequest  : out std_logic;

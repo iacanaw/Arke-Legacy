@@ -6,17 +6,16 @@
 -- VERSION      : 1.0                                                               --
 -- HISTORY      : Version 0.1 - Jun 16th, 2015                                      --
 --------------------------------------------------------------------------------------
+
 library IEEE;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
 use ieee.numeric_std.all;
-
+use work.Arke_pkg.all;
 
 entity ProgramablePriorityEncoder is
     port(
-        
-        request          : in std_logic_vector(7 downto 0);
-        lowerPriority    : in std_logic_vector(2 downto 0);
+        request         : in std_logic_vector(7 downto 0);
+        lowerPriority   : in std_logic_vector(2 downto 0);
         code            : out std_logic_vector(2 downto 0);
         newRequest      : out std_logic
     );

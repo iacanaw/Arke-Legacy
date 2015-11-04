@@ -7,11 +7,11 @@
 -- HISTORY      : Version 0.1 - Jun 16th, 2015                                      --
 --              : Version 0.2.1 - Set 18th, 2015                                    --
 --------------------------------------------------------------------------------------
+
 library IEEE;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
 use ieee.numeric_std.all;
-
+use work.Arke_pkg.all;
 
 entity SwitchControl is
     generic(
@@ -21,10 +21,13 @@ entity SwitchControl is
         clk         :    in    std_logic;
         rst         :    in    std_logic;
         
+        -- Input buffers interface
         routingReq  :    in  std_logic_vector(PORTS-1 downto 0);    -- Routing request from input buffers
         routingAck  :    out std_logic_vector(PORTS-1 downto 0);    -- Routing acknowledgement to input buffers
         data        :    in  Array1D_data(0 to PORTS-1);     -- Each array element corresponds to a input buffer data_out
         sending     :    in  std_logic_vector(PORTS-1 downto 0);  -- Each array element signals an input buffer transmiting data
+        
+        -- Crossbar interface
         table       :    out Array1D_3bits(0 to PORTS-1)    -- Routing table to be connected to crossbar. Each array element encodes a direction.
     );
 end SwitchControl;

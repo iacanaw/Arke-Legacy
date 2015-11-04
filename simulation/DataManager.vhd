@@ -10,9 +10,9 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.NoC_Package.all;
 use std.textio.all;
 use work.Text_Package.all;
+use work.Arke_pkg.all;
 
 
 entity DataManager is 

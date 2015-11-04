@@ -7,18 +7,24 @@
 -- HISTORY      : Version 0.1 - Jul 6th, 2015                                       --
 --              : Version 0.2.1 - Set 18th, 2015                                    --
 --------------------------------------------------------------------------------------
+
 library IEEE;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use work.Arke_Package.all;
+use work.Arke_pkg.all;
 
 entity Crossbar is
     port(   
-        routingTable:   in Array1D_3bits(0 to PORTS-1);
-        data_in     :   in Array1D_data(0 to PORTS-1);
-        control_in  :   in Array1D_control(0 to PORTS-1);
-        data_out    :   out Array1D_data(0 to PORTS-1);
-        control_out :   out Array1D_control(0 to PORTS-1)
+        -- Switch Control interface
+        routingTable    : in Array1D_3bits(0 to PORTS-1);
+        
+        -- Input buffers interface
+        data_in         : in Array1D_data(0 to PORTS-1);
+        control_in      : in Array1D_control(0 to PORTS-1);
+        
+        -- Router output ports interface
+        data_out        : out Array1D_data(0 to PORTS-1);
+        control_out     : out Array1D_control(0 to PORTS-1)
     );
 end Crossbar;
 

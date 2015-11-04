@@ -12,18 +12,19 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
+use work.Arke_pkg.all;
 
 entity NoC is
     port(
-        clk            : in std_logic;
-        rst            : in std_logic;
+        clk         : in std_logic;
+        rst         : in std_logic;
         
         -- LOCAL input and output port for each node
-        data_in        : in Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
-        data_out       : out Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
-        control_in     : in Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
-        control_out    : out Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1)
+        data_in     : in Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        control_in  : in Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        
+        data_out    : out Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        control_out : out Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1)
     );
 end NoC;
 

@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------------
--- DESIGN UNIT  : Top NoC                                                           --
+-- DESIGN UNIT  : NoC test bench                                                           --
 -- DESCRIPTION  :                                                                   --
 -- AUTHOR       : Everton Alceu Carara, Iaçanã Ianiski Weber & Michel Duarte        --
 -- CREATED      : Aug 10th, 2015                                                    --
@@ -10,13 +10,13 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
 use work.Text_Package.all;
+use work.Arke_pkg.all;
 
-entity TopNoC is
-end TopNoC;
+entity NoC_tb is
+end NoC_tb;
 
-architecture TopNoC of TopNoC is
+architecture NoC_tb of NoC_tb is
 
     signal clk         : std_logic := '0';
     signal rst         : std_logic;
@@ -60,4 +60,4 @@ begin
         control_out => control_out
     );
     
-end TopNoC;
+end NoC_tb;

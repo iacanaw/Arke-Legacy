@@ -11,19 +11,21 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.Arke_Package.all;
+use work.Arke_pkg.all;
 
 entity Router is
 generic(address: std_logic_vector(DATA_WIDTH-1 downto 0) := x"0015");
     port(
-        clk           : in std_logic;
-        rst           : in std_logic;
+        clk         : in std_logic;
+        rst         : in std_logic;
+        
         -- Data and control inputs
-        data_in       : in Array1D_data(0 to PORTS-1);
-        control_in    : in Array1D_control(0 to PORTS-1);
+        data_in     : in Array1D_data(0 to PORTS-1);
+        control_in  : in Array1D_control(0 to PORTS-1);
+        
         -- Data and control outputs
-        data_out      : out Array1D_data(0 to PORTS-1);
-        control_out   : out Array1D_control(0 to PORTS-1)
+        data_out    : out Array1D_data(0 to PORTS-1);
+        control_out : out Array1D_control(0 to PORTS-1)
     );
 end Router;
 
