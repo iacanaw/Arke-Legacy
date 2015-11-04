@@ -3,14 +3,14 @@
 -- DESCRIPTION  :                                                                   --
 -- AUTHOR       : Everton Alceu Carara, Iaçanã Ianiski Weber & Michel Duarte        --
 -- CREATED      : Aug 10th, 2015                                                    --
--- VERSION      : 0.2.3                                                             --
+-- VERSION      : v1.0                                                             --
 -- HISTORY      : Version 0.1 - Aug 10th, 2015                                      --
 --              : Version 0.2.1 - Set 18th, 2015                                    --
 --------------------------------------------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
-use work.NoC_Package.all;
+use work.Arke_Package.all;
 use work.Text_Package.all;
 
 entity TopNoC is

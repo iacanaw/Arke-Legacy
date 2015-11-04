@@ -3,7 +3,7 @@
 -- DESCRIPTION  :                                                                   --
 -- AUTHOR       : Everton Alceu Carara, Iaçanã Ianiski Weber & Michel Duarte        --
 -- CREATED      : Jul 9th, 2015                                                     --
--- VERSION      : 0.2.3                                                             --
+-- VERSION      : v1.0                                                             --
 -- HISTORY      : Version 0.1 - Jul 9th, 2015                                       --
 --              : Version 0.2.1 - Set 18th, 2015                                    --
 --------------------------------------------------------------------------------------

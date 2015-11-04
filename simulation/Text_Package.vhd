@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------
--- DESIGN UNIT  : NoC Package                                                       --
+-- DESIGN UNIT  : Text Package                                                       --
 -- DESCRIPTION  :                                                                   --
 -- AUTHOR       : Everton Alceu Carara, Iaçanã Ianiski Weber & Michel Duarte        --
 -- CREATED      : Jul 10th, 2015                                                    --
--- VERSION      : 0.1                                                               --
+-- VERSION      : v1.0                                                               --
 -- HISTORY      : Version 0.1 - Jul 10th, 2015                                      --
 --------------------------------------------------------------------------------------
 -- TEMP SECTIONS ARE INCOMPLETE

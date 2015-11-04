@@ -1,9 +1,9 @@
 --------------------------------------------------------------------------------------
--- DESIGN UNIT  : NoC Package                                                       --
+-- DESIGN UNIT  : Arke Package                                                       --
 -- DESCRIPTION  :                                                                   --
 -- AUTHOR       : Everton Alceu Carara, Iaçanã Ianiski Weber & Michel Duarte        --
 -- CREATED      : Apr 8th, 2015                                                     --
--- VERSION      : 0.2.3                                                             --
+-- VERSION      : v1.0                                                             --
 -- HISTORY      : Version 0.1 - Apr 8th, 2015                                       --
 --              : Version 0.2.1 - Set 18th, 2015                                    --
 --------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-package NoC_Package is
+package Arke_Package is
     
     ---------------
     -- Constants --
