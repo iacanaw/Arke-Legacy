@@ -95,7 +95,7 @@ package Arke_pkg is
     
 end package;
 
-package body NoC_Package is
+package body Arke_pkg is
     
     -- Function returns the logarithm of 2 from the argument.
     function Log2(temp : natural) return natural is
@@ -223,4 +223,4 @@ package body NoC_Package is
         
     end XY;
 
-end NoC_Package;
+end Arke_pkg;
