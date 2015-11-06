@@ -93,6 +93,103 @@ package Arke_pkg is
     function XYZ(target,current: std_logic_vector(DATA_WIDTH-1 downto 0)) return integer;
     function XY(target,current: std_logic_vector(DATA_WIDTH-1 downto 0)) return integer;
     
+    
+    
+    
+    --------------------------------
+    -- NoC components declaration --
+    --------------------------------
+    component InputBuffer is
+    port(
+        clk             : in std_logic;
+        rst             : in std_logic;
+        
+        -- Receiving/Sending Interface
+        data_in         : in std_logic_vector(DATA_WIDTH-1 downto 0);
+        control_in      : in std_logic_vector(CONTROL_WIDTH-1 downto 0);
+        data_out        : out std_logic_vector(DATA_WIDTH-1 downto 0);
+        control_out     : out std_logic_vector(CONTROL_WIDTH-1 downto 0);
+        
+        -- Switch Control Interface
+        routingRequest  : out std_logic;
+        routingAck      : in  std_logic;
+        sending         : out std_logic
+    );
+    end component;
+    
+    component Crossbar is
+    port(   
+        -- Switch Control interface
+        routingTable    : in Array1D_3bits(0 to PORTS-1);
+        
+        -- Input buffers interface
+        data_in         : in Array1D_data(0 to PORTS-1);
+        control_in      : in Array1D_control(0 to PORTS-1);
+        
+        -- Router output ports interface
+        data_out        : out Array1D_data(0 to PORTS-1);
+        control_out     : out Array1D_control(0 to PORTS-1)
+    );
+    end component;
+    
+    component ProgramablePriorityEncoder is
+    port(
+        request         : in std_logic_vector(7 downto 0);
+        lowerPriority   : in std_logic_vector(2 downto 0);
+        code            : out std_logic_vector(2 downto 0);
+        newRequest      : out std_logic
+    );
+    end component;
+    
+    component SwitchControl is
+    generic(
+        address : std_logic_vector(DATA_WIDTH-1 downto 0) := x"0015"
+    );
+    port(
+        clk         :    in    std_logic;
+        rst         :    in    std_logic;
+        
+        -- Input buffers interface
+        routingReq  :    in  std_logic_vector(PORTS-1 downto 0);    -- Routing request from input buffers
+        routingAck  :    out std_logic_vector(PORTS-1 downto 0);    -- Routing acknowledgement to input buffers
+        data        :    in  Array1D_data(0 to PORTS-1);     -- Each array element corresponds to a input buffer data_out
+        sending     :    in  std_logic_vector(PORTS-1 downto 0);  -- Each array element signals an input buffer transmiting data
+        
+        -- Crossbar interface
+        table       :    out Array1D_3bits(0 to PORTS-1)    -- Routing table to be connected to crossbar. Each array element encodes a direction.
+    );
+    end component;
+    
+    component Router is
+    generic(address: std_logic_vector(DATA_WIDTH-1 downto 0) := x"0015");
+    port(
+        clk         : in std_logic;
+        rst         : in std_logic;
+        
+        -- Data and control inputs
+        data_in     : in Array1D_data(0 to PORTS-1);
+        control_in  : in Array1D_control(0 to PORTS-1);
+        
+        -- Data and control outputs
+        data_out    : out Array1D_data(0 to PORTS-1);
+        control_out : out Array1D_control(0 to PORTS-1)
+    );
+    end component;
+    
+    component NoC is
+    port(
+        clk         : in std_logic;
+        rst         : in std_logic;
+        
+        -- LOCAL input and output port for each node
+        data_in     : in Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        control_in  : in Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        
+        data_out    : out Array3D_data(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1);
+        control_out : out Array3D_control(0 to DIM_X-1, 0 to DIM_Y-1, 0 to DIM_Z-1)
+    );
+    end component;
+    
 end package;
 
 package body Arke_pkg is
