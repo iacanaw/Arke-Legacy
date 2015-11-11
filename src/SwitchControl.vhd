@@ -50,7 +50,7 @@ architecture behavioral of SwitchControl is
 begin
     
     -- Set the priority encoder input request and routing algorithm for 2D NoCs 
-    NoC2D : if(DIM_X>1 and DIM_Y>1 and DIM_Z=1) generate
+    MESH_2D : if(DIM_X>1 and DIM_Y>1 and DIM_Z=1) generate
         
         req <= ("000" & routingReq);
         
@@ -60,7 +60,7 @@ begin
     end generate;
     
     -- Set the priority encoder input request and routing algorithm for 3D NoCs 
-    NoC3D : if(DIM_X>1 and DIM_Y>1 and DIM_Z>1) generate
+    MESH_3D : if(DIM_X>1 and DIM_Y>1 and DIM_Z>1) generate
         
          req <= ('0' & routingReq);
         

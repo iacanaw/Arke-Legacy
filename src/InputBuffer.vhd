@@ -31,9 +31,10 @@ entity InputBuffer is
     );
 end InputBuffer;
 
-architecture routingRequest_reg of InputBuffer is
+-- This architecture implies a 4 cycles pipeline router due to the register used to store the routingRequest output
+architecture pipeline_4_cycles of InputBuffer is
 
-    type state is (IDLE, ACK_WAITING ,TRANSMITTING);
+    type state is (IDLE, WAITING_ACK, TRANSMITTING);
     signal currentState : state;
     
     -- "first" and "last" indexes width calculated based on BUFFER_DEPTH
@@ -103,18 +104,18 @@ begin
                 when IDLE =>
                 if currentState = IDLE and last /= first then
                     routingRequest <= '1';
-                    currentState <= ACK_WAITING;
+                    currentState <= WAITING_ACK;
                 else 
                     currentState <= IDLE;
                 end if;
                 
                 -- Waits the ACK signal from SwitchControl
-                when ACK_WAITING =>
+                when WAITING_ACK =>
                     if routingAck = '1' then
                         currentState <= TRANSMITTING;
                         routingRequest <= '0';
                     else
-                        currentState <= ACK_WAITING;
+                        currentState <= WAITING_ACK;
                     end if;
                 
                 -- Send package flits
@@ -144,7 +145,8 @@ begin
     
 end architecture;
 
-architecture routingRequest_comb of InputBuffer is
+-- This architecture implies a 3 cycles pipeline router since the routingRequest output is generates combinatorially
+architecture pipeline_3_cycles of InputBuffer is
 
     type state is (IDLE, TRANSMITTING);
     signal currentState : state;

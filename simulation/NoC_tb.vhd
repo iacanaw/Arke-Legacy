@@ -50,7 +50,7 @@ begin
         end generate;
     end generate;
     
-    NoC: entity work.NoC
+    ARKE: entity work.NoC
     port map(
         clk         => clk,
         rst         => rst,

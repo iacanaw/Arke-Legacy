@@ -31,7 +31,7 @@ end Crossbar;
 architecture full of Crossbar is
 begin
 
-    NoC2D : if(DIM_X>1 and DIM_Y>1 and DIM_Z=1) generate
+    MESH_2D : if(DIM_X>1 and DIM_Y>1 and DIM_Z=1) generate
         --DATA_OUT
         DATAOUT: for i in 0 to PORTS-1 generate
             data_out(i) <= data_in(LOCAL) when TO_INTEGER(UNSIGNED(routingTable(LOCAL))) = i else
@@ -72,7 +72,7 @@ begin
         end generate;
     end generate;
 
-    NoC3D : if(DIM_X>1 and DIM_Y>1 and DIM_Z>1) generate
+    MESH_3D : if(DIM_X>1 and DIM_Y>1 and DIM_Z>1) generate
         --DATA_OUT
         DATAOUT: for i in 0 to PORTS-1 generate
             data_out(i) <= data_in(LOCAL) when TO_INTEGER(UNSIGNED(routingTable(LOCAL))) = i else
