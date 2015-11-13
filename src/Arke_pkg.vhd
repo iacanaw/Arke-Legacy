@@ -28,7 +28,7 @@ package Arke_pkg is
     constant DIM_Z    : integer := 3;
     
     -- Input buffers depth 
-    constant BUFFER_DEPTH : integer := 4; -- Buffer depth must be greater than 1 and a power of 2
+    constant BUFFER_DEPTH : integer := 8; -- Buffer depth must be greater than 1 and a power of 2
     
     -- Data and control buses 
     constant DATA_WIDTH     : integer := 16;                                                            
@@ -196,7 +196,6 @@ package body Arke_pkg is
     
     -- Function returns the logarithm of 2 from the argument.
     function Log2(temp : natural) return natural is
-        variable result : natural;
     begin
         for i in 0 to integer'high loop
             if (2**i >= temp) then

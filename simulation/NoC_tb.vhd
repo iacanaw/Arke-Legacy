@@ -35,8 +35,8 @@ begin
         DataManager_y: for y in 0 to DIM_Y-1 generate
             DataManager_z: for z in 0 to DIM_Z-1 generate
                 DataManager: entity work.DataManager
-                generic map(fileNameIn => "data/fileIn" & IntegerToString(x) & IntegerToString(y) & IntegerToString(z) & ".txt",
-                        fileNameOut => "data/fileOut" & IntegerToString(x) & IntegerToString(y) & IntegerToString(z) & ".txt")
+                generic map(fileNameIn => "simulation/data/fileIn" & IntegerToString(x) & '_' & IntegerToString(y) & '_' & IntegerToString(z) & ".txt",
+                        fileNameOut => "simulation/data/fileOut" & IntegerToString(x) & '_' & IntegerToString(y) & '_' & IntegerToString(z) & ".txt")
                 port map(
                     clk         => clk,
                     rst         => rst,
