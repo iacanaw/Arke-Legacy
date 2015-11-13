@@ -45,7 +45,7 @@ begin
 --------------------------------------------------------------------------------------
 -- CROSSBAR
 --------------------------------------------------------------------------------------
-CROSSBAR: entity work.Crossbar
+CROSSBARX: Crossbar
     port map(   
         routingTable => routingTable,
         data_in      => crossbarDataIn,
@@ -57,7 +57,7 @@ CROSSBAR: entity work.Crossbar
 --------------------------------------------------------------------------------------
 -- SWITCH CONTROL
 --------------------------------------------------------------------------------------
-SWITCH_CONTROL: entity work.SwitchControl
+SWITCH_CONTROL: SwitchControl
     generic map(address  => address)
     port map(
         clk         => clk,
@@ -72,11 +72,13 @@ SWITCH_CONTROL: entity work.SwitchControl
         -- Crossbar interface
         table       => routingTable
     );
+    
 --------------------------------------------------------------------------------------
 -- Buffers instantiation with for ... generate
---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------- 
     PortBuffers: for n in 0 to PORTS-1 generate
-        INPUT_BUFFER: entity work.InputBuffer(pipeline_4_cycles) 
+        for INPUT_BUFFER: InputBuffer use entity work.InputBuffer(pipeline_3_cycles);
+        INPUT_BUFFER: InputBuffer      
         port map(
             clk                     => clk,
             rst                     => rst,

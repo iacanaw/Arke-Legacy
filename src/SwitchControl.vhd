@@ -74,7 +74,7 @@ begin
     -------------------------------------------------------------
     -- Round robin policy to chose the input port to be served --
     -------------------------------------------------------------
-    PPE: entity work.ProgramablePriorityEncoder
+    PPE: ProgramablePriorityEncoder
         port map(
             request         => req,
             lowerPriority   => lowerPriority,
