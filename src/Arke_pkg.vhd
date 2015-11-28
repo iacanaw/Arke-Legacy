@@ -143,8 +143,7 @@ package Arke_pkg is
     
     component SwitchControl is
     generic(
-        address : std_logic_vector(DATA_WIDTH-1 downto 0) := x"0015"
-    );
+        address : std_logic_vector(DATA_WIDTH-1 downto 0));
     port(
         clk         :    in    std_logic;
         rst         :    in    std_logic;
@@ -152,8 +151,8 @@ package Arke_pkg is
         -- Input buffers interface
         routingReq  :    in  std_logic_vector(PORTS-1 downto 0);    -- Routing request from input buffers
         routingAck  :    out std_logic_vector(PORTS-1 downto 0);    -- Routing acknowledgement to input buffers
-        data        :    in  Array1D_data(0 to PORTS-1);     -- Each array element corresponds to a input buffer data_out
-        sending     :    in  std_logic_vector(PORTS-1 downto 0);  -- Each array element signals an input buffer transmiting data
+        data        :    in  Array1D_data(0 to PORTS-1);            -- Each array element corresponds to a input buffer data_out
+        sending     :    in  std_logic_vector(PORTS-1 downto 0);    -- Each array element signals an input buffer transmiting data
         
         -- Crossbar interface
         table       :    out Array1D_3bits(0 to PORTS-1)    -- Routing table to be connected to crossbar. Each array element encodes a direction.
@@ -161,7 +160,7 @@ package Arke_pkg is
     end component;
     
     component Router is
-    generic(address: std_logic_vector(DATA_WIDTH-1 downto 0) := x"0015");
+    generic(address: std_logic_vector(DATA_WIDTH-1 downto 0));
     port(
         clk         : in std_logic;
         rst         : in std_logic;

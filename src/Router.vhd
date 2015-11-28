@@ -77,8 +77,8 @@ SWITCH_CONTROL: SwitchControl
 -- Buffers instantiation with for ... generate
 -------------------------------------------------------------------------------------- 
     PortBuffers: for n in 0 to PORTS-1 generate
-        for INPUT_BUFFER: InputBuffer use entity work.InputBuffer(pipeline_3_cycles);
-        INPUT_BUFFER: InputBuffer      
+        for INPUT_BUFFER: InputBuffer use entity work.InputBuffer(pipeline_4_cycles);
+        begin INPUT_BUFFER: InputBuffer      
         port map(
             clk                     => clk,
             rst                     => rst,
