@@ -7,7 +7,6 @@
 *.vstf
 
 [Ww]ork/
-[Dd]ata/
 
 *.tcl
 *.do
